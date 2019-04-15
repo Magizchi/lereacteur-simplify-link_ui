@@ -24,7 +24,7 @@ class Form extends React.Component {
 		console.log(httpRegex.test(lien));
 
 		if (httpRegex.test(lien)) {
-			const response = await axios.post('http://localhost:3700', {
+			const response = await axios.post('https://lereacteurtest.herokuapp.com/', {
 				lien: lien
 			});
 			console.log(response.data);
@@ -35,7 +35,7 @@ class Form extends React.Component {
 	};
 
 	componentDidMount = async () => {
-		const response2 = await axios.get('http://localhost:3700');
+		const response2 = await axios.get('https://lereacteurtest.herokuapp.com/');
 		this.setState({
 			liens: response2.data
 		});
@@ -44,7 +44,7 @@ class Form extends React.Component {
 	// a ajouter dans le BDD
 	onClick = async (lien, index) => {
 		const { liens } = this.state;
-		const response = await axios.post('http://localhost:3700/addCounter', {
+		const response = await axios.post('https://lereacteurtest.herokuapp.com/addCounter', {
 			lien: lien
 		});
 		liens[index] = response.data;
